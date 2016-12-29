@@ -25,8 +25,8 @@ var bio = {
     display: function() {
 
         // add Name and role to the beginning of the header
-        $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
-        $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
+        $('#header').prepend(HTMLheaderRole.replace("%data%", bio.role));
+        $('#header').prepend(HTMLheaderName.replace("%data%", bio.name));
 
         // add contact info
         $('#topContacts').append(HTMLmobile.replace("%data%", bio.contacts.mobile));
@@ -36,19 +36,26 @@ var bio = {
         $('#topContacts').append(HTMLlocation.replace("%data%", bio.contacts.location));
 
         // add picture
-        $('#topContacts').prepend(HTMLbioPic.replace("%data%", bio.biopic));
+        $('#header').append(HTMLbioPic.replace("%data%", bio.biopic));
 
         // add welcomeMessage
-        $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+        $('#header').append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 
         // add skills
         if (bio.skills.length > 0) {
-            $("#header").append(HTMLskillsStart);
+            $('#header').append(HTMLskillsStart);
 
             for (var i = 0; i < bio.skills.length; i++) {
-                $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+                $('#skills').append(HTMLskills.replace("%data%", bio.skills[i]));
             }
         }
+
+        // connection info is also used for the footer, so here goes ..
+        $('#footerContacts').append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+        $('#footerContacts').append(HTMLemail.replace("%data%", bio.contacts.email));
+        $('#footerContacts').append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+        $('#footerContacts').append(HTMLgithub.replace("%data%", bio.contacts.github));
+        $('#footerContacts').append(HTMLlocation.replace("%data%", bio.contacts.location));
     }
 };
 
